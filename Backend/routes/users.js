@@ -19,7 +19,8 @@ router.post("/register", (req, res) => {
           lastname: req.body.lastname,
           phone: req.body.phone,
           email: req.body.email,
-          password: req.body.password
+          password: req.body.password,
+          usertype: "user"
         });
         user
           .save()
@@ -62,11 +63,12 @@ router.post("/login", async function(req, res) {
         token: token,
         user: user,
         id: user._id,
-        firstname: user.firstname,
-        lastname: user.lastname,
-        phone: user.phone,
+        first_name: user.first_name,
+        last_name: user.last_name,
         email: user.email,
-        password: user.password
+        phone: user.phone,
+        password: user.password,
+        usertype: user.usertype
       });
     } else {
       res.json({
